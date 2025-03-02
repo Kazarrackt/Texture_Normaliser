@@ -1,7 +1,7 @@
 # ---
 # KazLabs Media Group
 # Made with ♥ by Liam Sorensen - AI Assisted by Cursor.AI.
-# Version 0.1.3 - 2025-03-03
+# Version 0.1.7 - 2025-03-03
 # ---
 
 """
@@ -11,6 +11,7 @@ This is the main entry point for the Texture Normaliser application.
 It imports the app from the src directory and runs it.
 """
 
+import logging
 import sys
 import os
 
@@ -28,7 +29,7 @@ def main():
         from src.texture_processor import processor
         
         # Log startup information
-        logger.info(f"Texture Normaliser v0.1.3 starting up")
+        logger.info(f"Texture Normaliser v0.1.7 starting up")
         logger.info(f"Python version: {sys.version}")
         logger.info(f"Operating system: {sys.platform}")
         
@@ -86,8 +87,22 @@ def main():
                 # Because branding is important, even when it doesn't work.
                 """
                 try:
-                    logo_path = os.path.join("assets", "logo.png")
-                    if os.path.exists(logo_path):
+                    # Try multiple possible paths for the logo
+                    possible_paths = [
+                        os.path.join("assets", "logo.png"),  # Standard path
+                        os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "logo.png"),  # Absolute path
+                        os.path.join(os.path.dirname(sys.executable), "assets", "logo.png"),  # Executable directory
+                        "logo.png"  # Fallback to root directory
+                    ]
+                    
+                    logo_path = None
+                    for path in possible_paths:
+                        if os.path.exists(path):
+                            logo_path = path
+                            logger.info(f"Found logo at: {path}")
+                            break
+                    
+                    if logo_path:
                         # Open the image file
                         image = Image.open(logo_path)
                         # Resize the image to maintain the 5:1 aspect ratio (400x80)
@@ -98,7 +113,7 @@ def main():
                         self.logo_label.configure(image=self.logo_image)
                         logger.info("Logo loaded successfully")
                     else:
-                        logger.warning(f"Logo file not found: {logo_path}")
+                        logger.warning(f"Logo file not found in any of the expected locations")
                 except Exception as e:
                     logger.error(f"Error loading logo: {e}")
                     
@@ -142,7 +157,7 @@ def main():
                 
                 self.version_label = ctk.CTkLabel(
                     self.header_frame, 
-                    text="Version 0.1.3", 
+                    text="Version 0.1.7", 
                     font=ctk.CTkFont(size=12)
                 )
                 self.version_label.pack(pady=(0, 10))
@@ -357,6 +372,9 @@ def main():
                 # Redirects logs to the UI text box.
                 # Because users love to see logs they don't understand.
                 """
+                # Import logging here to avoid circular imports
+                import logging
+                
                 # Create a custom handler that writes to the UI
                 class TextHandler(logging.Handler):
                     def __init__(self, text_widget):

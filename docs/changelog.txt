@@ -34,4 +34,20 @@
 ? : Moved documentation files to docs directory (docs/:1) - Centralized documentation
 ? : Moved image assets to assets directory (assets/:1) - Better asset management
 + : Created new main.py entry point (main.py:1) - Cleaner architecture with proper imports
-? : Updated PyInstaller spec file for new structure (TextureNormaliser.spec:5-7) - Maintain build functionality 
+? : Updated PyInstaller spec file for new structure (TextureNormaliser.spec:5-7) - Maintain build functionality
+
+-0.1.5- Production Build 2025-03-03 -
+? : Fixed import references in src modules (src/*.py:10-12) - Resolved circular import issues
+? : Updated version numbers across all files (src/*.py:4) - Consistent versioning
+? : Added missing logging import in main.py (main.py:12) - Ensure proper logging functionality
++ : Created final production build with optimized structure (dist/TextureNormaliser.exe) - Ready for distribution 
+
+-0.1.6- Bug Fix 2025-03-03 -
+? : Added missing logging import in _setup_log_redirection method (main.py:361) - Fixed application startup error
+? : Updated version number to 0.1.6 (main.py:4) - Accurate version tracking
++ : Rebuilt executable with fixed code (dist/TextureNormaliser.exe) - Stable production build 
+
+-0.1.7- Bug Fix 2025-03-03 -
+? : Improved logo loading to check multiple possible paths (main.py:80-95) - Fixed logo not displaying in executable
+? : Added better logging for logo loading process (main.py:90) - Easier troubleshooting
++ : Rebuilt executable with improved asset handling (dist/TextureNormaliser.exe) - More robust application 

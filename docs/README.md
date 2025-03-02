@@ -1,90 +1,79 @@
 # Texture Normaliser
 
-A powerful tool for generating normal maps, bump maps, and AO/roughness maps from texture images.
-
-![Texture Normaliser Logo](../assets/logo.png)
+A tool for generating normal maps and other texture maps from source images.
 
 ## Features
 
-- Generate normal maps using Sobel filter
-- Generate bump maps using histogram equalization
-- Generate AO/roughness maps (optional)
-- Modern, user-friendly interface
-- Batch processing of multiple files
+- Generate normal maps from texture images
+- Generate bump maps from texture images
+- Generate ambient occlusion maps
+- Generate roughness maps
+- Batch processing support
 - Configurable export directory
-- Dark and light theme support
+- Dark/Light theme support
 
 ## Installation
 
-### Option 1: Using the Executable (Windows)
+### Option 1: Download the executable
+Download the latest release from the releases page and run the executable.
 
-1. Download the latest release from the releases page
-2. Extract the ZIP file to a location of your choice
-3. Run `TextureNormaliser.exe`
-
-### Option 2: From Source
-
+### Option 2: Run from source
 1. Clone this repository
 2. Install the required dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
+```
+pip install -r requirements.txt
+```
 3. Run the application:
-   ```
-   python main.py
-   ```
+```
+python main.py
+```
+
+## Project Structure
+
+```
+Texture_Normaliser/
+├── assets/            # Image assets and resources
+├── docs/              # Documentation files
+├── src/               # Core Python modules
+│   ├── config.py      # Configuration management
+│   ├── logger.py      # Logging system
+│   └── texture_processor.py  # Texture processing logic
+├── tests/             # Test scripts
+│   ├── create_test_image.py  # Test image generator
+│   └── test_processor.py     # Processor test script
+├── main.py            # Main application entry point
+├── TextureNormaliser.spec  # PyInstaller specification
+└── requirements.txt   # Python dependencies
+```
 
 ## Usage
 
-### Basic Usage
-
 1. Launch the application
-2. Select files or a folder containing texture images
-3. Configure the options as needed
-4. Click "Process" to generate the maps
-5. Access the generated maps in the export directory
+2. Select a source texture image or directory
+3. Configure processing options
+4. Click "Process" to generate texture maps
+5. View the generated maps in the export directory
 
-### Options
+## Configuration
 
-- **Enable Normal Map**: Generate normal maps using the Sobel filter
-- **Enable Bump Map**: Generate bump maps using histogram equalization
-- **Enable AO/Roughness**: Generate ambient occlusion/roughness maps
-- **Kernel Size**: Set the Sobel filter kernel size (3, 5, 7, or 9)
-- **Export Directory**: Set the directory where generated maps will be saved
-- **Theme**: Choose between Dark, Light, or System theme
+The application stores configuration in `config.json`. You can modify the following settings:
 
-### Output
-
-For each processed image, the following files will be generated in the export directory:
-
-- `<filename>_original.png`: A copy of the original image
-- `<filename>_normal_map.png`: The generated normal map (if enabled)
-- `<filename>_bump_map.png`: The generated bump map (if enabled)
-- `<filename>_ao_roughness.png`: The generated AO/roughness map (if enabled)
-
-## Command Line Usage
-
-The texture processor can also be used from the command line:
-
-```
-python -m src.texture_processor <input_path>
-```
-
-Where `<input_path>` can be a file or directory.
+- Export directory
+- Default kernel size
+- UI theme (dark/light)
+- Recent files list
 
 ## Testing
 
-The project includes scripts for testing and demonstration in the `tests` directory:
-
 ### Generate Test Image
 
-To create a test texture image with a gradient and shapes:
+To create a test image for testing purposes:
 
 ```
 python tests/create_test_image.py
 ```
 
-This will create a test image in the `import` directory.
+This will generate a test texture image in the `import/` directory.
 
 ### Test Processor
 
@@ -94,40 +83,17 @@ To test the core texture processing functionality:
 python tests/test_processor.py
 ```
 
-This will process the test image and verify that the normal map and bump map are generated correctly.
+This will process the test image and verify that the processor is working correctly.
 
-For more information about the tests, see the [tests README](tests/README.md).
-
-## Development
-
-### Project Structure
-
-- `main.py`: Main application entry point
-- `src/`: Core application modules
-  - `texture_processor.py`: Core texture processing functionality
-  - `config.py`: Configuration management
-  - `logger.py`: Logging functionality
-- `assets/`: Application assets (images, icons)
-- `docs/`: Documentation files
-  - `README.md`: This file
-  - `changelog.txt`: Version history and changes
-- `tests/`: Test and debugging utilities
-  - `create_test_image.py`: Generate test images
-  - `test_processor.py`: Test the texture processor
-
-### Building the Executable
+## Building the Executable
 
 To build the executable:
 
 ```
-pyinstaller --onefile --windowed --icon=assets/logo.ico --add-data "assets/logo.png;assets" main.py
-```
-
-Or use the provided spec file:
-
-```
 python -m PyInstaller TextureNormaliser.spec
 ```
+
+The executable will be created in the `dist/` directory.
 
 ## License
 

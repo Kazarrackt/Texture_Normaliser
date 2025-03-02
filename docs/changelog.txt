@@ -1,0 +1,37 @@
+-0.1.0- Initial Release 2025-03-03 -
++ : Created new project structure (app.py:1) - Improved organization and maintainability
++ : Added proper logging system (logger.py:1) - Better error tracking and debugging
++ : Added configuration management (config.py:1) - User preferences persistence
++ : Added modern UI with CustomTkinter (app.py:20) - Better user experience
++ : Added options menu (app.py:150-250) - More user control over processing
++ : Added theme switching (app.py:300-310) - Dark/Light mode support
++ : Added export directory configuration (app.py:250-270) - User-defined output location
++ : Added AO/Roughness map generation (texture_processor.py:150-170) - Additional texture map type
++ : Added batch processing with progress tracking (app.py:400-450) - Better handling of multiple files
++ : Added error handling and recovery (texture_processor.py:50-70) - More robust processing
++ : Added README.md with usage instructions (README.md:1) - Better documentation 
+
+-0.1.1- Bug Fix 2025-03-03 -
+? : Added missing logging import (app.py:10) - Fixed application startup error
++ : Added test image generator (create_test_image.py:1) - For testing and demonstration
++ : Added processor test script (test_processor.py:1) - Verify core functionality works 
+
+-0.1.2- UI Improvements 2025-03-03 -
+? : Fixed logo display to use proper 5:1 aspect ratio (app.py:80-81) - Better branding presentation
+? : Increased window size to 1000x800 (app.py:30-31) - Improved visibility and usability
+? : Centered logo and removed redundant title text (app.py:170-190) - Cleaner UI layout
+? : Updated version number to reflect changes (app.py:195) - Accurate version tracking 
+
+-0.1.3- Code Organization 2025-03-03 -
+? : Moved test files to dedicated tests directory (tests/*:1) - Better code organization
++ : Added tests/README.md with test documentation (tests/README.md:1) - Improved developer guidance
+? : Updated file paths in test scripts (tests/create_test_image.py:10-15) - Maintain functionality after move
+? : Updated main README.md to reflect new tests location (README.md:100-110) - Keep documentation accurate
+
+-0.1.4- Project Structure Reorganization 2025-03-03 -
+? : Created proper directory structure with src, docs, and assets folders (/:1) - Better project organization
+? : Moved core Python modules to src directory (src/:1) - Cleaner root directory
+? : Moved documentation files to docs directory (docs/:1) - Centralized documentation
+? : Moved image assets to assets directory (assets/:1) - Better asset management
++ : Created new main.py entry point (main.py:1) - Cleaner architecture with proper imports
+? : Updated PyInstaller spec file for new structure (TextureNormaliser.spec:5-7) - Maintain build functionality 
